@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SysConfigRedis {
+
     @Autowired
     private RedisUtils redisUtils;
 

@@ -23,6 +23,7 @@ public class RedisUtils {
      * 不设置过期时长
      */
     public final static long NOT_EXPIRE = -1;
+
     private final static Gson gson = new Gson();
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
