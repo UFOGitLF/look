@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fly.modules.sys.dao.SysMenuDao">
+    <select id="queryList" resultType="com.fly.modules.sys.entity.SysMenuEntity">
+        select m.*,(select p.name from sys_menu p where p.menu_id = m.parent_id) as parentName
+        from sys_menu m
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by m.${sidx} ${order}
+            </when>
+            <otherwise>
+                order by m.order_num asc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+</mapper>

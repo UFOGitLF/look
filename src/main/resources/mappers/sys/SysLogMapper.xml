@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fly.modules.sys.dao.SysLogDao">
+    <insert id="save" parameterType="com.fly.modules.sys.entity.SysLogEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_log
+        (
+        `username`,
+        `operation`,
+        `method`,
+        `params`,
+        `time`,
+        `ip`,
+        `create_date`
+        )
+        VALUES
+        (
+        #{username},
+        #{operation},
+        #{method},
+        #{params},
+        #{time},
+        #{ip},
+        #{createDate}
+        )
+    </insert>
+
+</mapper>
