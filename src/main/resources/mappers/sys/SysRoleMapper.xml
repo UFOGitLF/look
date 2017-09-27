@@ -6,5 +6,28 @@
     <select id="queryRoleIdList" resultType="long">
         SELECT * FROM sys_role WHERE create_user_id = #{createUserId}
     </select>
+    
+    <select id="queryList" resultType="com.fly.modules.sys.entity.SysRoleEntity">
+        SELECT * FROM sys_role
+        <where>
+            <if test="roleName != null and roleName.trim() != ''">
+                AND `role_name` LIKE concat('%',#{roleName},'%')
+            </if>
+            <if test="createUserId != null">
+                AND create_user_id = #{createUserId}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                ORDER BY ${sidx} ${order}
+            </when>
+            <otherwise>
+                ORDER BY role_id ASC
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
 
 </mapper>

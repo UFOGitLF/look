@@ -2,6 +2,8 @@ package com.fly.modules.sys.service;
 
 import com.fly.modules.sys.entity.SysUserEntity;
 
+import java.util.List;
+
 /**
  * 系统用户
  * Created by xinshidai on 17/9/18.
@@ -16,4 +18,6 @@ public interface SysUserService {
      * 保存
      */
     void save(SysUserEntity userEntity);
+
+    List<Long> queryAllMenuId(Long userId);
 }

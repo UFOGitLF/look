@@ -32,7 +32,7 @@
                 `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
             </if>
         </where>
-        order by id desc gdfs
+        order by id desc
         <if test="offset != null and limit != null">
             limit #{offset}, #{limit}
         </if>

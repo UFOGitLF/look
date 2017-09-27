@@ -17,7 +17,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.Date;
 import java.util.List;
 
-@Service("SysUserService")
+@Service
 public class SysUserServiceImpl implements SysUserService {
     @Autowired
     private SysUserDao sysUserDao;
@@ -48,6 +48,11 @@ public class SysUserServiceImpl implements SysUserService {
 
         //保存用户与角色对应关系
         userRoleService.saveOrUpdate(userEntity.getUserId(), userEntity.getRoleIdList());
+    }
+
+    @Override
+    public List<Long> queryAllMenuId(Long userId) {
+        return sysUserDao.queryAllMenuId(userId);
     }
 
     /**

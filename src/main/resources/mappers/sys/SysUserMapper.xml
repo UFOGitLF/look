@@ -38,11 +38,19 @@
         #{createTime}
         )
     </insert>
+
     <!--查询用户的所有权限-->
     <select id="queryAllPerms" resultType="string">
         SELECT m.perms FROM sys_user_role ur
         LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
         LEFT JOIN sys_menu m ON rm.menu_id = m.menu_id
         WHERE ur.user_id = #{userId}
+    </select>
+
+    <!-- 查询用户的所有菜单ID -->
+    <select id="queryAllMenuId" resultType="long">
+        select distinct rm.menu_id from sys_user_role ur
+        LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
+        where ur.user_id = #{userId}
     </select>
 </mapper>

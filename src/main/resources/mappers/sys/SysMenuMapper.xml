@@ -17,4 +17,8 @@
             limit #{offset}, #{limit}
         </if>
     </select>
+    
+    <select id="queryListParentId" parameterType="long" resultType="com.fly.modules.sys.entity.SysMenuEntity">
+        SELECT * FROM sys_menu WHERE parent_id = #{value} ORDER BY order_num ASC
+    </select>
 </mapper>

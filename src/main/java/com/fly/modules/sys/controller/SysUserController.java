@@ -35,4 +35,13 @@ public class SysUserController extends BaseController {
 
         return R.ok();
     }
+
+    /**
+     * 获取登录的用户信息
+     */
+    @RequestMapping("/info")
+    public R info(){
+        return R.ok().put("user", getUser());
+    }
+
 }
