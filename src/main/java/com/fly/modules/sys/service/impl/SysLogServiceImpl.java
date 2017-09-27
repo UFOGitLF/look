@@ -6,6 +6,9 @@ import com.fly.modules.sys.service.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 系统日志
  * <p>
@@ -19,5 +22,15 @@ public class SysLogServiceImpl implements SysLogService {
     @Override
     public void save(SysLogEntity logEntity) {
         logDao.save(logEntity);
+    }
+
+    @Override
+    public List<SysLogEntity> queryList(Map<String, Object> params) {
+        return logDao.queryList(params);
+    }
+
+    @Override
+    public int queryTotal(Map<String, Object> map) {
+        return logDao.queryTotal(map);
     }
 }

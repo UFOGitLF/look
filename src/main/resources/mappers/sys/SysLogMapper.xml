@@ -25,4 +25,26 @@
         )
     </insert>
 
+    <select id="queryList" resultType="com.fly.modules.sys.entity.SysLogEntity">
+        select * from sys_log
+        <where>
+            <if test="key != null and key.trim() != ''">
+                `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
+            </if>
+        </where>
+        order by id desc gdfs
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from sys_log
+        <where>
+            <if test="key != null and key.trim() != ''">
+                `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
+            </if>
+        </where>
+    </select>
+
 </mapper>

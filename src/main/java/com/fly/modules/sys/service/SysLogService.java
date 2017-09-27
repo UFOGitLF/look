@@ -2,6 +2,9 @@ package com.fly.modules.sys.service;
 
 import com.fly.modules.sys.entity.SysLogEntity;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 系统日志
  * <p>
@@ -12,4 +15,8 @@ public interface SysLogService {
      * 保存系统日志
      */
     void save(SysLogEntity logEntity);
+
+    List<SysLogEntity> queryList(Map<String, Object> params);
+
+    int queryTotal(Map<String,Object> map);
 }
