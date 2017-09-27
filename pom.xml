@@ -45,6 +45,7 @@
     </parent>
 
     <properties>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -62,12 +63,6 @@
         <aliyun.oss.version>2.5.0</aliyun.oss.version>
         <qcloud.cos.version>4.4</qcloud.cos.version>
 
-        <!--wagon plugin 配置-->
-        <!--<service-path>/Users/lf/Test/fly/look</service-path>-->
-        <!--<pack-name>${artifactId}-${version}.jar</pack-name>-->
-        <!--<remote-addr>192.168.31.94:22</remote-addr>-->
-        <!--<remote-username>UFO</remote-username>-->
-        <!--<remote-passwd>subject100</remote-passwd>-->
     </properties>
 
     <dependencies>
@@ -256,27 +251,6 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
-            <!--<plugin>-->
-            <!--<groupId>org.codehaus.mojo</groupId>-->
-            <!--<artifactId>wagon-maven-plugin</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--<configuration>-->
-            <!--<fromFile>target/${pack-name}</fromFile>-->
-            <!--<url><![CDATA[scp://${remote-username}:${remote-passwd}@${remote-addr}${service-path}]]></url>-->
-            <!--<commands>-->
-            <!--&lt;!&ndash;kill old process&ndash;&gt;-->
-            <!--<command>pkill -f ${pack-name}</command>-->
-            <!--<command>rm -f ${service-path}/look.log</command>-->
-            <!--&lt;!&ndash;restart jar package,write result to look.log&ndash;&gt;-->
-            <!--<command><![CDATA[nohup java -jar ${service-path}/${pack-name} &#45;&#45;spring.profiles.active=test > ${service-path}/look.log 2>&1 &]]></command>-->
-            <!--<command><![CDATA[netstat -nptl]]></command>-->
-            <!--<command><![CDATA[ps -ef | grep java | grep -v grep]]></command>-->
-            <!--</commands>-->
-            <!--&lt;!&ndash; 运行命令 mvn clean package wagon:upload-single wagon:sshexec&ndash;&gt;-->
-            <!--<displayCommandOutputs>true</displayCommandOutputs>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
 
             <plugin>
                 <groupId>com.spotify</groupId>
