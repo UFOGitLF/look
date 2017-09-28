@@ -256,6 +256,14 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.3</version>
+                <executions>
+                <execution>
+                <phase>package</phase>
+                <goals>
+                <goal>build</goal>
+                </goals>
+                </execution>
+                </executions>
                 <configuration>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}</dockerDirectory>
