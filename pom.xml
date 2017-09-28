@@ -45,7 +45,7 @@
     </parent>
 
     <properties>
-        <docker.image.prefix>flyboot</docker.image.prefix>
+        <docker.image.prefix>bootTemplate</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -234,7 +234,6 @@
 
                 <dependencies>
                     <!-- spring热部署-->
-                    <!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
