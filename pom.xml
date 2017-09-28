@@ -45,7 +45,7 @@
     </parent>
 
     <properties>
-
+        <docker.image.prefix>flyboot</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -252,23 +252,23 @@
                 </configuration>
             </plugin>
 
-            <!--<plugin>-->
-                <!--<groupId>com.spotify</groupId>-->
-                <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>0.4.14</version>-->
-                <!--<configuration>-->
-                    <!--<imageName>look</imageName>-->
-                    <!--<dockerDirectory>${project.basedir}</dockerDirectory>-->
-                    <!--<resources>-->
-                        <!--<resource>-->
-                            <!--<targetPath>/</targetPath>-->
-                            <!--<directory>${project.build.directory}</directory>-->
-                            <!--<include>${project.build.finalName}.jar</include>-->
-                        <!--</resource>-->
-                    <!--</resources>-->
-                <!--</configuration>-->
-                <!--&lt;!&ndash; 运行命令 mvn clean package docker:build 打包并生成docker镜像 &ndash;&gt;-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.14</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <!-- 运行命令 mvn clean package docker:build 打包并生成docker镜像 -->
+            </plugin>
         </plugins>
     </build>
 
