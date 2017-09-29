@@ -45,7 +45,7 @@
     </parent>
 
     <properties>
-        <docker.image.prefix>bootTemplate</docker.image.prefix>
+        <docker.image.prefix>template</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
