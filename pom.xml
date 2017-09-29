@@ -258,7 +258,7 @@
                 <version>0.4.13</version>
                 <configuration>
                     <!--镜像名称-->
-                    <imageName>${docker.image.prefix}:${project.version}</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <!-- 指定Dockerfile所在的路径 -->
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <resources>
