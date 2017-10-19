@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * 定时执行日志
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 @Data
-public class ScheduleJobLogEntity implements Serializable{
+public class ScheduleJobLogEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

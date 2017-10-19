@@ -8,6 +8,9 @@ import com.fly.modules.sys.entity.SysUserTokenEntity;
  * Created by xinshidai on 17/9/18.
  */
 public interface SysUserTokenService {
+
+    SysUserTokenEntity queryByUserId(Long userId);
+
     /**
      * 生成token
      *

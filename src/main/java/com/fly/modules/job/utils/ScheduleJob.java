@@ -18,26 +18,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- *  定时任务
- *
+ * 定时任务
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 public class ScheduleJob extends QuartzJobBean {
 
-    private Logger logger= LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private ExecutorService service= Executors.newSingleThreadExecutor();
+    private ExecutorService service = Executors.newSingleThreadExecutor();
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        String jsonJob=jobExecutionContext.getMergedJobDataMap().getString(ScheduleJobEntity.JOB_PARAM_KEY);
-        ScheduleJobEntity scheduleJobEntity=new Gson().fromJson(jsonJob,ScheduleJobEntity.class);
+        String jsonJob = jobExecutionContext.getMergedJobDataMap().getString(ScheduleJobEntity.JOB_PARAM_KEY);
+        ScheduleJobEntity scheduleJobEntity = new Gson().fromJson(jsonJob, ScheduleJobEntity.class);
 
         //获取
-        ScheduleJobLogService scheduleJobLogService= (ScheduleJobLogService) SpringContextUtils.getBean("scheduleJObLogService");
+        ScheduleJobLogService scheduleJobLogService = (ScheduleJobLogService) SpringContextUtils.getBean("scheduleJObLogService");
 
         //数据库保存记录
-        ScheduleJobLogEntity scheduleJobLogEntity=new ScheduleJobLogEntity();
+        ScheduleJobLogEntity scheduleJobLogEntity = new ScheduleJobLogEntity();
         scheduleJobLogEntity.setJobId(scheduleJobEntity.getJobId());
         scheduleJobLogEntity.setBeanName(scheduleJobEntity.getBeanName());
         scheduleJobLogEntity.setMethodName(scheduleJobEntity.getMethodName());
@@ -58,7 +58,7 @@ public class ScheduleJob extends QuartzJobBean {
 
             //任务执行总时长
             long times = System.currentTimeMillis() - startTime;
-            scheduleJobLogEntity.setTimes((int)times);
+            scheduleJobLogEntity.setTimes((int) times);
             //任务状态    0：成功    1：失败
             scheduleJobLogEntity.setStatus(0);
 
@@ -68,12 +68,12 @@ public class ScheduleJob extends QuartzJobBean {
 
             //任务执行总时长
             long times = System.currentTimeMillis() - startTime;
-            scheduleJobLogEntity.setTimes((int)times);
+            scheduleJobLogEntity.setTimes((int) times);
 
             //任务状态    0：成功    1：失败
             scheduleJobLogEntity.setStatus(1);
             scheduleJobLogEntity.setError(StringUtils.substring(e.toString(), 0, 2000));
-        }finally {
+        } finally {
             scheduleJobLogService.save(scheduleJobLogEntity);
         }
     }

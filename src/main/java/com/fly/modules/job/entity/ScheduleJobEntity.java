@@ -8,18 +8,16 @@ import java.util.Date;
 
 /**
  * 定时器
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 @Data
-public class ScheduleJobEntity implements Serializable{
-    private static final long serialVersionUID = 1L;
-
+public class ScheduleJobEntity implements Serializable {
     /**
      * 任务调度参数key
      */
     public static final String JOB_PARAM_KEY = "JOB_PARAM_KEY";
-
+    private static final long serialVersionUID = 1L;
     /**
      * 任务id
      */
@@ -28,13 +26,13 @@ public class ScheduleJobEntity implements Serializable{
     /**
      * spring bean名称
      */
-    @NotBlank(message="bean名称不能为空")
+    @NotBlank(message = "bean名称不能为空")
     private String beanName;
 
     /**
      * 方法名
      */
-    @NotBlank(message="方法名称不能为空")
+    @NotBlank(message = "方法名称不能为空")
     private String methodName;
 
     /**
@@ -45,7 +43,7 @@ public class ScheduleJobEntity implements Serializable{
     /**
      * cron表达式
      */
-    @NotBlank(message="cron表达式不能为空")
+    @NotBlank(message = "cron表达式不能为空")
     private String cronExpression;
 
     /**

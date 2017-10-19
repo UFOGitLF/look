@@ -35,4 +35,14 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 
         userRoleDao.save(map);
     }
+
+    @Override
+    public List<Long> queryRoleIdList(Long userId) {
+        return userRoleDao.queryRoleIdList(userId);
+    }
+
+    @Override
+    public void delete(Long userId) {
+        userRoleDao.delete(userId);
+    }
 }

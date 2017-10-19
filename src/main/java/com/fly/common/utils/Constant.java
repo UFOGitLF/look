@@ -14,7 +14,7 @@ public class Constant {
     /**
      * 定时任务状态
      */
-    public enum ScheduleStatus{
+    public enum ScheduleStatus {
         /**
          * 正常
          */
@@ -64,7 +64,7 @@ public class Constant {
         }
     }
 
-    public enum MenuType{
+    public enum MenuType {
         /**
          * 目录
          */

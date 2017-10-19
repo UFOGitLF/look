@@ -2,7 +2,7 @@ package com.fly.common.utils;
 
 /**
  * 系统参数相关的key
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 public class ConfigConstant {

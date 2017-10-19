@@ -45,7 +45,7 @@ public class SysMenuServiceImpl implements SysMenuService{
 
     @Override
     public List<SysMenuEntity> queryNotButtonList() {
-        return null;
+        return menuDao.queryNotButtonList();
     }
 
     @Override
@@ -86,36 +86,36 @@ public class SysMenuServiceImpl implements SysMenuService{
 
     @Override
     public SysMenuEntity queryObject(Long menuId) {
-        return null;
+        return menuDao.queryObject(menuId);
     }
 
     @Override
     public List<SysMenuEntity> queryList(Map<String, Object> map) {
-        return null;
+        return menuDao.queryList(map);
     }
 
     @Override
     public int queryTotal(Map<String, Object> map) {
-        return 0;
+        return menuDao.queryTotal(map);
     }
 
     @Override
     public void save(SysMenuEntity menu) {
-
+        menuDao.save(menu);
     }
 
     @Override
     public void update(SysMenuEntity menu) {
-
+        menuDao.update(menu);
     }
 
     @Override
     public void deleteBatch(Long[] menuIds) {
-
+        menuDao.deleteBatch(menuIds);
     }
 
     @Override
     public List<SysMenuEntity> queryUserList(Long userId) {
-        return null;
+        return menuDao.queryUserList(userId);
     }
 }

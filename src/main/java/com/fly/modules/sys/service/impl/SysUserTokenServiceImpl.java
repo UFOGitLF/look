@@ -19,6 +19,11 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
     private SysUserTokenDao tokenDao;
 
     @Override
+    public SysUserTokenEntity queryByUserId(Long userId) {
+        return tokenDao.queryByUserId(userId);
+    }
+
+    @Override
     public R createToken(Long userId) {
         //生成一个token
         String token = TokenGenerator.generateValue();
@@ -28,7 +33,7 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
         //过期时间
         Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
         //判断是否生成过token
-        SysUserTokenEntity tokenEntity = tokenDao.queryByUserId(userId);
+        SysUserTokenEntity tokenEntity = queryByUserId(userId);
         if (tokenEntity == null) {
             tokenEntity = new SysUserTokenEntity();
             tokenEntity.setUserId(userId);

@@ -16,7 +16,13 @@ public interface SysLogService {
      */
     void save(SysLogEntity logEntity);
 
+    SysLogEntity queryObject(Long id);
+
     List<SysLogEntity> queryList(Map<String, Object> params);
 
     int queryTotal(Map<String,Object> map);
+
+    void delete(Long id);
+
+    void deleteBatch(Long[] ids);
 }

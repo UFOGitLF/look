@@ -3,6 +3,15 @@
 
 <mapper namespace="com.fly.modules.sys.dao.SysUserRoleDao">
 
+    <select id="queryList" resultType="com.fly.modules.sys.entity.SysUserRoleEntity">
+        select * from sys_user_role
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
     <select id="queryRoleIdList" resultType="long">
         SELECT role_id FROM sys_user_role WHERE user_id = #{userId}
     </select>

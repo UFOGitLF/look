@@ -9,7 +9,7 @@ import java.util.Properties;
 
 /**
  * 定时任务配置
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 @Configuration
@@ -17,7 +17,7 @@ public class ScheduleConfig {
     private String instanceName;
 
     @Bean
-    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource){
+    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource) {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setDataSource(dataSource);
 

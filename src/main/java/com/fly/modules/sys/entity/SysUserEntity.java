@@ -36,7 +36,8 @@ public class SysUserEntity implements Serializable {
      * 密码
      */
     @NotBlank(message = "密码不能为空", groups = AddGroup.class)
-    @Pattern(regexp="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/", message="密码必须是6~15位数字和字母的组合",groups = {AddGroup.class, UpdateGroup.class})
+    //注：(?!xxxx) 是正则表达式的负向零宽断言一种形式，标识预该位置后不是xxxx字符。
+    @Pattern(regexp="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$", message="密码必须是6~15位数字和字母的组合",groups = {AddGroup.class, UpdateGroup.class})
     private String password;
 
     /**

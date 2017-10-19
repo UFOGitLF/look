@@ -47,4 +47,19 @@
         </where>
     </select>
 
+    <delete id="delete">
+        delete from sys_log where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from sys_log where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryObject" resultType="com.fly.modules.sys.entity.SysLogEntity">
+        select * from sys_log where id = #{value}
+    </select>
+
 </mapper>

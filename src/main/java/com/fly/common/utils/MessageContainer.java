@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * Description: 状态码转换
  * <p/>
- * Created by js.lee on 15/3/27.
  */
 public class MessageContainer {
 

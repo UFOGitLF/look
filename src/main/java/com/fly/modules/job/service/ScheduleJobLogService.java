@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 定时任务日志
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 public interface ScheduleJobLogService {

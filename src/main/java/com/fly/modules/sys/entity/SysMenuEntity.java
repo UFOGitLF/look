@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 菜单管理
- * Created by xinshidai on 17/9/21.
+ * Created by xsd on 17/9/21.
  */
 @Data
 public class SysMenuEntity implements Serializable {

@@ -25,6 +25,11 @@ public class SysLogServiceImpl implements SysLogService {
     }
 
     @Override
+    public SysLogEntity queryObject(Long id) {
+        return logDao.queryObject(id);
+    }
+
+    @Override
     public List<SysLogEntity> queryList(Map<String, Object> params) {
         return logDao.queryList(params);
     }
@@ -32,5 +37,15 @@ public class SysLogServiceImpl implements SysLogService {
     @Override
     public int queryTotal(Map<String, Object> map) {
         return logDao.queryTotal(map);
+    }
+
+    @Override
+    public void delete(Long id) {
+        logDao.delete(id);
+    }
+
+    @Override
+    public void deleteBatch(Long[] ids) {
+        logDao.deleteBatch(ids);
     }
 }

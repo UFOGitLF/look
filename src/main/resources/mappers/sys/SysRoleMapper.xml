@@ -3,10 +3,14 @@
 
 <mapper namespace="com.fly.modules.sys.dao.SysRoleDao">
 
+    <select id="queryObject" resultType="com.fly.modules.sys.entity.SysRoleEntity">
+        select * from sys_role where role_id = #{value}
+    </select>
+
     <select id="queryRoleIdList" resultType="long">
         SELECT * FROM sys_role WHERE create_user_id = #{createUserId}
     </select>
-    
+
     <select id="queryList" resultType="com.fly.modules.sys.entity.SysRoleEntity">
         SELECT * FROM sys_role
         <where>
@@ -29,5 +33,63 @@
             limit #{offset},#{limit}
         </if>
     </select>
+
+    <select id="queryTotal" resultType="int">
+        SELECT count(*) FROM sys_role
+        <where>
+            <if test="roleName != null and roleName.trim() != '' ">
+                AND `role_name` LIKE concat('%',#{roleName},'%');
+            </if>
+            <if test="createId != null">
+                AND create_user_id = #{createUserId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.fly.modules.sys.entity.SysRoleEntity" useGeneratedKeys="true"
+            keyProperty="roleId">
+        insert into sys_role
+        (
+        `role_id`,
+        `role_name`,
+        `remark`,
+        `create_user_id`,
+        `create_time`
+        )
+        values
+        (
+        #{roleId},
+        #{roleName},
+        #{remark},
+        #{createUserId},
+        #{createTime}
+        )
+    </insert>
+
+    <delete id="deleteBatch">
+        delete from sys_role where role_id in
+        <foreach item="roleId" collection="array" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+        ;
+        delete from sys_role_menu where role_id in
+        <foreach item="roleId" collection="array" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+        ;
+        delete from sys_user_role where role_id in
+        <foreach item="roleId" collection="array" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <update id="update" parameterType="com.fly.modules.sys.entity.SysRoleEntity">
+        update sys_role
+        <set>
+            <if test="roleName != null">`role_name` = #{roleName},</if>
+            <if test="remark != null">`remark` = #{remark}</if>
+        </set>
+        where role_id = #{roleId}
+    </update>
 
 </mapper>

@@ -7,11 +7,11 @@ import java.util.List;
 
 /**
  * 分页工具类
- *
+ * <p>
  * Created by xinshidai on 17/9/26.
  */
 @Data
-public class PageData implements Serializable{
+public class PageData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,12 +26,12 @@ public class PageData implements Serializable{
     //列表数据
     private List<?> list;
 
-    public PageData(List<?> list,int totalCount,int pageSize,int currPage){
-        this.list=list;
-        this.totalCount=totalCount;
-        this.currPage=currPage;
-        this.pageSize=pageSize;
-        this.totalPage= (int) Math.ceil((double) totalCount/pageSize);
+    public PageData(List<?> list, int totalCount, int pageSize, int currPage) {
+        this.list = list;
+        this.totalCount = totalCount;
+        this.currPage = currPage;
+        this.pageSize = pageSize;
+        this.totalPage = (int) Math.ceil((double) totalCount / pageSize);
     }
 
 }
