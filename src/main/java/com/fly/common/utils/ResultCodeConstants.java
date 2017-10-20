@@ -18,6 +18,8 @@ public class ResultCodeConstants {
      */
     public static final int ACCOUNT_LOCKED = 5002;
 
+    public static final int FILE_EMPTY_ERROR = 5003;
+
     public static void main(String[] args) throws IOException {
         Pattern pattern = Pattern.compile("= *(\\d+);");
 

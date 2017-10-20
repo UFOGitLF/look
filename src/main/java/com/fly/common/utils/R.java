@@ -30,6 +30,7 @@ public class R extends HashMap<String, Object> {
 
     public static R error(int code) {
 
+        //获取对应错误码的错误信息
         String msg = MessageContainer.getMsg(code);
 
         if (!StringUtils.isEmpty(msg)) {

@@ -1,2 +1,2 @@
 # look
-flyboot template
+fly template
