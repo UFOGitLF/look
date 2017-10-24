@@ -28,15 +28,15 @@ public class ScheduleJob extends QuartzJobBean {
 
     private ExecutorService service = Executors.newSingleThreadExecutor();
 
-    @Override
+    @Override//时间到来时自动执行该方法
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         String jsonJob = jobExecutionContext.getMergedJobDataMap().getString(ScheduleJobEntity.JOB_PARAM_KEY);
         ScheduleJobEntity scheduleJobEntity = new Gson().fromJson(jsonJob, ScheduleJobEntity.class);
 
-        //获取
-        ScheduleJobLogService scheduleJobLogService = (ScheduleJobLogService) SpringContextUtils.getBean("scheduleJObLogService");
+        //获取jobLogService
+        ScheduleJobLogService scheduleJobLogService = (ScheduleJobLogService) SpringContextUtils.getBean("scheduleJobLogService");
 
-        //数据库保存记录
+        //数据库保存执行记录
         ScheduleJobLogEntity scheduleJobLogEntity = new ScheduleJobLogEntity();
         scheduleJobLogEntity.setJobId(scheduleJobEntity.getJobId());
         scheduleJobLogEntity.setBeanName(scheduleJobEntity.getBeanName());

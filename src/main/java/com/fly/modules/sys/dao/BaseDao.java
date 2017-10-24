@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * 基础Dao(还需在XML文件里，有对应的SQL语句)
+ *
  * Created by xinshidai on 17/9/18.
  */
 public interface BaseDao<T> {

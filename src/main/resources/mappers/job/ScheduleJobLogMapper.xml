@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.modules.job.dao.ScheduleJobLogDao">
+    <select id="queryObject" resultType="com.fly.modules.job.entity.ScheduleJobLogEntity">
+        SELECT * FROM schedule_job_log WHERE log_id = #{value}
+    </select>
+    
+    <select id="queryList" resultType="com.fly.modules.job.entity.ScheduleJobLogEntity">
+        SELECT * FROM schedule_job_log
+        <where>
+            <if test="jobId != null and jobId.trim() != '' ">
+                AND job_id = #{jobId}
+            </if>
+        </where>
+        ORDER BY log_id DESC
+        <if test="offset != null and limit != null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        SELECT COUNT(1) FROM schedule_job_log
+        <where>
+            <if test="jobId != null and jobId.trim() != '' ">
+                AND job_id = #{jobId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.fly.modules.job.entity.ScheduleJobLogEntity">
+        INSERT INTO schedule_job_log
+        (
+        `job_id`,
+        `bean_name`,
+        `method_name`,
+        `params`,
+        `status`,
+        `error`,
+        `times`,
+        `create_time`
+        )
+        VALUES
+        (
+        #{jobId},
+        #{beanName},
+        #{methodName},
+        #{params},
+        #{status},
+        #{error},
+        #{times},
+        #{createTime}
+        )
+    </insert>
+</mapper>
+
+
+

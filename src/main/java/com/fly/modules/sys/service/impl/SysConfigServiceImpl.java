@@ -19,7 +19,7 @@ import java.util.Map;
  *
  * Created by xinshidai on 17/9/25.
  */
-@Service
+@Service("sysConfigService")
 public class SysConfigServiceImpl implements SysConfigService{
     @Autowired
     private SysConfigDao sysConfigDao;
