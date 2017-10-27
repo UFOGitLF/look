@@ -14,7 +14,6 @@ import java.util.Date;
 @Data
 public class ScheduleJobEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
     /**
      * 任务调度参数key
      */
