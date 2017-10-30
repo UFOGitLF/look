@@ -14,65 +14,65 @@ import java.util.UUID;
 
 @Service("tokenService")
 public class TokenServiceImpl implements TokenService {
-	@Autowired
-	private TokenDao tokenDao;
-	//12小时后过期
-	private final static int EXPIRE = 3600 * 12;
+    //12小时后过期
+    private final static int EXPIRE = 3600 * 12;
+    @Autowired
+    private TokenDao tokenDao;
 
-	@Override
-	public TokenEntity queryByUserId(Long userId) {
-		return tokenDao.queryByUserId(userId);
-	}
+    @Override
+    public TokenEntity queryByUserId(Long userId) {
+        return tokenDao.queryByUserId(userId);
+    }
 
-	@Override
-	public TokenEntity queryByToken(String token) {
-		return tokenDao.queryByToken(token);
-	}
+    @Override
+    public TokenEntity queryByToken(String token) {
+        return tokenDao.queryByToken(token);
+    }
 
-	@Override
-	public void save(TokenEntity token){
-		tokenDao.save(token);
-	}
-	
-	@Override
-	public void update(TokenEntity token){
-		tokenDao.update(token);
-	}
+    @Override
+    public void save(TokenEntity token) {
+        tokenDao.save(token);
+    }
 
-	@Override
-	public Map<String, Object> createToken(long userId) {
-		//生成一个token
-		String token = UUID.randomUUID().toString();
-		//当前时间
-		Date now = new Date();
+    @Override
+    public void update(TokenEntity token) {
+        tokenDao.update(token);
+    }
 
-		//过期时间
-		Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
+    @Override
+    public Map<String, Object> createToken(long userId) {
+        //生成一个token
+        String token = UUID.randomUUID().toString();
+        //当前时间
+        Date now = new Date();
 
-		//判断是否生成过token
-		TokenEntity tokenEntity = queryByUserId(userId);
-		if(tokenEntity == null){
-			tokenEntity = new TokenEntity();
-			tokenEntity.setUserId(userId);
-			tokenEntity.setToken(token);
-			tokenEntity.setUpdateTime(now);
-			tokenEntity.setExpireTime(expireTime);
+        //过期时间
+        Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
 
-			//保存token
-			save(tokenEntity);
-		}else{
-			tokenEntity.setToken(token);
-			tokenEntity.setUpdateTime(now);
-			tokenEntity.setExpireTime(expireTime);
+        //判断是否生成过token
+        TokenEntity tokenEntity = queryByUserId(userId);
+        if (tokenEntity == null) {
+            tokenEntity = new TokenEntity();
+            tokenEntity.setUserId(userId);
+            tokenEntity.setToken(token);
+            tokenEntity.setUpdateTime(now);
+            tokenEntity.setExpireTime(expireTime);
 
-			//更新token
-			update(tokenEntity);
-		}
+            //保存token
+            save(tokenEntity);
+        } else {
+            tokenEntity.setToken(token);
+            tokenEntity.setUpdateTime(now);
+            tokenEntity.setExpireTime(expireTime);
 
-		Map<String, Object> map = new HashMap<>();
-		map.put("token", token);
-		map.put("expire", EXPIRE);
+            //更新token
+            update(tokenEntity);
+        }
 
-		return map;
-	}
+        Map<String, Object> map = new HashMap<>();
+        map.put("token", token);
+        map.put("expire", EXPIRE);
+
+        return map;
+    }
 }

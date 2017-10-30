@@ -34,7 +34,7 @@
     <update id="update" parameterType="com.fly.modules.oss.entity.SysOssEntity">
         update sys_oss
         <set>
-            <if test="url != null">`url` = #{url}, </if>
+            <if test="url != null">`url` = #{url},</if>
             <if test="createDate != null">`create_date` = #{createDate}</if>
         </set>
         where id = #{id}

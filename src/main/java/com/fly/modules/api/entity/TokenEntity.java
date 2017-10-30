@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * 用户Token
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Data
-public class TokenEntity implements Serializable{
+public class TokenEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     /**

@@ -16,12 +16,12 @@ import java.io.InputStream;
  * <p>
  * Created by xinshidai on 17/10/19.
  */
-public class QiniuCloudStorageService extends CloudStorageService{
+public class QiniuCloudStorageService extends CloudStorageService {
     private UploadManager uploadManager;
     private String token;
 
-    public QiniuCloudStorageService(CloudStorageConfig config){
-        this.config=config;
+    public QiniuCloudStorageService(CloudStorageConfig config) {
+        this.config = config;
 
         //初始化
         init();
@@ -29,8 +29,8 @@ public class QiniuCloudStorageService extends CloudStorageService{
 
     //初始化方法
     private void init() {
-        uploadManager=new UploadManager(new Configuration(Zone.autoZone()));
-        token= Auth.create(
+        uploadManager = new UploadManager(new Configuration(Zone.autoZone()));
+        token = Auth.create(
                 config.getQiniuAccessKey(),
                 config.getQiniuSecretKey()).uploadToken(config.getQiniuBucketName());
     }
@@ -38,33 +38,33 @@ public class QiniuCloudStorageService extends CloudStorageService{
     @Override
     public String upload(byte[] data, String path) {
         try {
-            Response res = uploadManager.put(data,path,token);
-            if (!res.isOK()){
-                throw new RuntimeException("七牛上传出错"+res.toString());
+            Response res = uploadManager.put(data, path, token);
+            if (!res.isOK()) {
+                throw new RuntimeException("七牛上传出错" + res.toString());
             }
         } catch (Exception e) {
-            throw new RRException("上传文件失败,请核对七牛配置信息",e);
+            throw new RRException("上传文件失败,请核对七牛配置信息", e);
         }
         return config.getQiniuDomain() + "/" + path;
     }
 
     @Override
     public String upload(byte[] data) {
-        return upload(data,getPath(config.getQiniuPrefix()));
+        return upload(data, getPath(config.getQiniuPrefix()));
     }
 
     @Override
     public String upload(InputStream inputStream, String path) {
         try {
-            byte[] data=IOUtils.toByteArray(inputStream);
-            return this.upload(data,path);
+            byte[] data = IOUtils.toByteArray(inputStream);
+            return this.upload(data, path);
         } catch (IOException e) {
-            throw new RRException("上传文件失败",e);
+            throw new RRException("上传文件失败", e);
         }
     }
 
     @Override
     public String upload(InputStream inputStream) {
-        return upload(inputStream,getPath(config.getQiniuPrefix()));
+        return upload(inputStream, getPath(config.getQiniuPrefix()));
     }
 }

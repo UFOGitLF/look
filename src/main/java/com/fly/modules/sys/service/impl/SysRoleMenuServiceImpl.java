@@ -12,11 +12,11 @@ import java.util.Map;
 
 /**
  * 角色与菜单对应关系
- *
+ * <p>
  * Created by xinshidai on 17/9/27.
  */
 @Service
-public class SysRoleMenuServiceImpl implements SysRoleMenuService{
+public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     @Autowired
     private SysRoleMenuDao roleMenuDao;
 
@@ -26,8 +26,8 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService{
         //先删除角色与菜单关系
         roleMenuDao.delete(roleId);
 
-        if(menuIdList.size() == 0){
-            return ;
+        if (menuIdList.size() == 0) {
+            return;
         }
 
         //保存角色与菜单关系

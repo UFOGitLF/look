@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 用户
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Mapper
-public interface UserDao extends BaseDao<UserEntity>{
+public interface UserDao extends BaseDao<UserEntity> {
 
     UserEntity queryByMobile(String mobile);
 }

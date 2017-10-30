@@ -55,25 +55,26 @@ public class SysUserController extends BaseController {
      */
     @RequestMapping("list")
     @RequiresPermissions("sys:user:list")
-    public R list(@RequestParam Map<String,Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         //只有超级管理员,才能查看所有管理员列表
-        if (getUserId() != Constant.SUPER_ADMIN){
-            params.put("createUserId",getUserId());
+        if (getUserId() != Constant.SUPER_ADMIN) {
+            params.put("createUserId", getUserId());
         }
         //查询列表数据
-        Query query=new Query(params);
-        List<SysUserEntity> userList=userService.queryList(params);
-        int total=userService.queryTotal(query);
+        Query query = new Query(params);
+        List<SysUserEntity> userList = userService.queryList(params);
+        int total = userService.queryTotal(query);
 
-        PageData pageData=new PageData(userList,total,query.getLimit(),query.getPage());
+        PageData pageData = new PageData(userList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page",pageData);
+        return R.ok().put("page", pageData);
     }
+
     /**
      * 获取登录的用户信息
      */
     @RequestMapping("/info")
-    public R info(){
+    public R info() {
         return R.ok().put("user", getUser());
     }
 
@@ -82,17 +83,17 @@ public class SysUserController extends BaseController {
      */
     @SysLog("修改密码")
     @RequestMapping("password")
-    public R changePassword(String password,String newPassword){
-        Assert.isBlank(newPassword,"新密码不能为空");
+    public R changePassword(String password, String newPassword) {
+        Assert.isBlank(newPassword, "新密码不能为空");
 
         //sha256加密
-        password=new Sha256Hash(password,getUser().getSalt()).toHex();
+        password = new Sha256Hash(password, getUser().getSalt()).toHex();
 
-        newPassword=new Sha256Hash(newPassword,getUser().getSalt()).toHex();
+        newPassword = new Sha256Hash(newPassword, getUser().getSalt()).toHex();
 
         //更新密码
-        int count=userService.updatePassword(getUserId(),password,newPassword);
-        if (count == 0){
+        int count = userService.updatePassword(getUserId(), password, newPassword);
+        if (count == 0) {
             return R.error("原密码不正确");
         }
         return R.ok();
@@ -103,14 +104,14 @@ public class SysUserController extends BaseController {
      */
     @RequestMapping("info/{userId}")
     @RequiresPermissions("sys:user:info")
-    public R info(@PathVariable("userId") Long userId){
-        SysUserEntity user=userService.queryObject(userId);
+    public R info(@PathVariable("userId") Long userId) {
+        SysUserEntity user = userService.queryObject(userId);
 
         //获取用户所属的角色列表
-        List<Long> roleIdList=userRoleService.queryRoleIdList(userId);
+        List<Long> roleIdList = userRoleService.queryRoleIdList(userId);
         user.setRoleIdList(roleIdList);
 
-        return R.ok().put("user",user);
+        return R.ok().put("user", user);
     }
 
     /**
@@ -119,7 +120,7 @@ public class SysUserController extends BaseController {
     @SysLog("修改用户")
     @RequestMapping("/update")
     @RequiresPermissions("sys:user:update")
-    public R update(@RequestBody SysUserEntity user){
+    public R update(@RequestBody SysUserEntity user) {
         ValidatorUtils.validateEntity(user, UpdateGroup.class);
 
         user.setCreateUserId(getUserId());
@@ -134,12 +135,12 @@ public class SysUserController extends BaseController {
     @SysLog("删除用户")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:user:delete")
-    public R delete(@RequestBody Long[] userIds){
-        if(ArrayUtils.contains(userIds, 1L)){
+    public R delete(@RequestBody Long[] userIds) {
+        if (ArrayUtils.contains(userIds, 1L)) {
             return R.error("系统管理员不能删除");
         }
 
-        if(ArrayUtils.contains(userIds, getUserId())){
+        if (ArrayUtils.contains(userIds, getUserId())) {
             return R.error("当前用户不能删除");
         }
 

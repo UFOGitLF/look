@@ -17,11 +17,11 @@ import java.util.Map;
 
 /**
  * 定时任务
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @Service("scheduleJobService")
-public class ScheduleJobServiceImpl implements ScheduleJobService{
+public class ScheduleJobServiceImpl implements ScheduleJobService {
 
     @Autowired
     private Scheduler scheduler;
@@ -50,13 +50,13 @@ public class ScheduleJobServiceImpl implements ScheduleJobService{
         scheduleJob.setStatus(Constant.ScheduleStatus.NORMAL.getValue());
         jobDao.save(scheduleJob);
 
-        ScheduleUtils.createScheduleJob(scheduler,scheduleJob);
+        ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
     }
 
     @Override
     @Transactional
     public void update(ScheduleJobEntity scheduleJob) {
-        ScheduleUtils.updateScheduleJob(scheduler,scheduleJob);
+        ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
 
         jobDao.update(scheduleJob);
     }
@@ -64,8 +64,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService{
     @Override
     @Transactional
     public void deleteBatch(Long[] jobIds) {
-        for (Long jobId:jobIds){
-            ScheduleUtils.deleteScheduleJob(scheduler,jobId);
+        for (Long jobId : jobIds) {
+            ScheduleUtils.deleteScheduleJob(scheduler, jobId);
         }
         //删除数据
         jobDao.deleteBatch(jobIds);
@@ -73,25 +73,25 @@ public class ScheduleJobServiceImpl implements ScheduleJobService{
 
     @Override
     public int updateBatch(Long[] jobIds, int status) {
-        Map<String,Object> map=new HashMap<>();
-        map.put("list",jobIds);
-        map.put("status",status);
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", jobIds);
+        map.put("status", status);
         return jobDao.update(map);
     }
 
     @Override
     @Transactional
     public void run(Long[] jobIds) {
-        for (Long jobId:jobIds){
-            ScheduleUtils.run(scheduler,queryObject(jobId));
+        for (Long jobId : jobIds) {
+            ScheduleUtils.run(scheduler, queryObject(jobId));
         }
     }
 
     @Override
     @Transactional
     public void pause(Long[] jobIds) {
-        for (Long jobId:jobIds){
-            ScheduleUtils.pauseJob(scheduler,jobId);
+        for (Long jobId : jobIds) {
+            ScheduleUtils.pauseJob(scheduler, jobId);
         }
         updateBatch(jobIds, Constant.ScheduleStatus.PAUSE.getValue());
     }
@@ -99,8 +99,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService{
     @Override
     @Transactional
     public void resume(Long[] jobIds) {
-        for (Long jobId:jobIds){
-            ScheduleUtils.resumeJob(scheduler,jobId);
+        for (Long jobId : jobIds) {
+            ScheduleUtils.resumeJob(scheduler, jobId);
         }
         updateBatch(jobIds, Constant.ScheduleStatus.NORMAL.getValue());
     }

@@ -1,6 +1,5 @@
 package com.fly.modules.sys.service;
 
-import com.fly.common.utils.Query;
 import com.fly.modules.sys.entity.SysRoleEntity;
 
 import java.util.List;
@@ -17,9 +16,9 @@ public interface SysRoleService {
      */
     List<Long> queryRoleIdList(Long createUserId);
 
-    List<SysRoleEntity> queryList(Map<String,Object> map);
+    List<SysRoleEntity> queryList(Map<String, Object> map);
 
-    int queryTotal(Map<String,Object> map);
+    int queryTotal(Map<String, Object> map);
 
     SysRoleEntity queryObject(Long roleId);
 

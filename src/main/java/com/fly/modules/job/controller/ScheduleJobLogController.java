@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * 定时任务日志
- *
+ * <p>
  * Created by xinshidai on 17/10/23.
  */
 @RestController
@@ -31,7 +31,7 @@ public class ScheduleJobLogController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:schedule:log")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
         List<ScheduleJobLogEntity> jobList = jobLogService.queryList(query);
@@ -46,7 +46,7 @@ public class ScheduleJobLogController {
      * 定时任务日志信息
      */
     @RequestMapping("/info/{logId}")
-    public R info(@PathVariable("logId") Long logId){
+    public R info(@PathVariable("logId") Long logId) {
         ScheduleJobLogEntity log = jobLogService.queryObject(logId);
 
         return R.ok().put("log", log);

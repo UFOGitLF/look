@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * 用户
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Data
-public class UserEntity implements Serializable{
+public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

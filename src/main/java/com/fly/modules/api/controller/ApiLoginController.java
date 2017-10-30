@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * API登录授权
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @RestController
@@ -28,21 +28,22 @@ public class ApiLoginController {
 
     /**
      * 登录
-     * @param mobile     手机号
-     * @param password   密码
+     *
+     * @param mobile   手机号
+     * @param password 密码
      * @return
      */
     @AuthIgnore
     @PostMapping(value = "login")
-    public R login(String mobile,String password){
-        Assert.isBlank(mobile,"手机号不能为空");
-        Assert.isBlank(password,"密码不能为空");
+    public R login(String mobile, String password) {
+        Assert.isBlank(mobile, "手机号不能为空");
+        Assert.isBlank(password, "密码不能为空");
 
         //用户登录
-        long userId=userService.login(mobile,password);
+        long userId = userService.login(mobile, password);
 
         //生成token
-        Map<String,Object> map=tokenService.createToken(userId);
+        Map<String, Object> map = tokenService.createToken(userId);
 
         return R.ok(map);
     }

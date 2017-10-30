@@ -19,12 +19,12 @@ import java.util.Map;
 
 /**
  * 角色管理
- *
+ * <p>
  * Created by xinshidai on 17/9/27.
  */
 @RestController
 @RequestMapping(value = "sys/role")
-public class SysRoleController extends BaseController{
+public class SysRoleController extends BaseController {
     @Autowired
     private SysRoleService sysRoleService;
     @Autowired
@@ -35,9 +35,9 @@ public class SysRoleController extends BaseController{
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:role:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         //如果不是超级管理员，则只查询自己创建的角色列表
-        if(getUserId() != Constant.SUPER_ADMIN){
+        if (getUserId() != Constant.SUPER_ADMIN) {
             params.put("createUserId", getUserId());
         }
 
@@ -56,11 +56,11 @@ public class SysRoleController extends BaseController{
      */
     @RequestMapping("/select")
     @RequiresPermissions("sys:role:select")
-    public R select(){
+    public R select() {
         Map<String, Object> map = new HashMap<>();
 
         //如果不是超级管理员，则只查询自己所拥有的角色列表
-        if(getUserId() != Constant.SUPER_ADMIN){
+        if (getUserId() != Constant.SUPER_ADMIN) {
             map.put("createUserId", getUserId());
         }
         List<SysRoleEntity> list = sysRoleService.queryList(map);
@@ -73,7 +73,7 @@ public class SysRoleController extends BaseController{
      */
     @RequestMapping("/info/{roleId}")
     @RequiresPermissions("sys:role:info")
-    public R info(@PathVariable("roleId") Long roleId){
+    public R info(@PathVariable("roleId") Long roleId) {
         SysRoleEntity role = sysRoleService.queryObject(roleId);
 
         //查询角色对应的菜单
@@ -89,7 +89,7 @@ public class SysRoleController extends BaseController{
     @SysLog("保存角色")
     @RequestMapping("/save")
     @RequiresPermissions("sys:role:save")
-    public R save(@RequestBody SysRoleEntity role){
+    public R save(@RequestBody SysRoleEntity role) {
         ValidatorUtils.validateEntity(role);
 
         role.setCreateUserId(getUserId());
@@ -104,7 +104,7 @@ public class SysRoleController extends BaseController{
     @SysLog("修改角色")
     @RequestMapping("/update")
     @RequiresPermissions("sys:role:update")
-    public R update(@RequestBody SysRoleEntity role){
+    public R update(@RequestBody SysRoleEntity role) {
         ValidatorUtils.validateEntity(role);
 
         role.setCreateUserId(getUserId());
@@ -119,7 +119,7 @@ public class SysRoleController extends BaseController{
     @SysLog("删除角色")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:role:delete")
-    public R delete(@RequestBody Long[] roleIds){
+    public R delete(@RequestBody Long[] roleIds) {
         sysRoleService.deleteBatch(roleIds);
 
         return R.ok();

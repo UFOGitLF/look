@@ -16,11 +16,11 @@ import javax.annotation.Resource;
 
 /**
  * 有@LoginUser注解的方法参数，注入当前登录用户
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Component
-public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver{
+public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Resource
     private UserService userService;
 
@@ -33,7 +33,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         //获取用户ID
         Object object = nativeWebRequest.getAttribute(AuthorizationInterceptor.LOGIN_USER_KEY, RequestAttributes.SCOPE_REQUEST);
-        if (object == null){
+        if (object == null) {
             return null;
         }
         UserEntity userEntity = userService.queryObject((Long) object);

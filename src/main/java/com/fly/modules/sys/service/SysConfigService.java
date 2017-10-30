@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 系统配置信息
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 public interface SysConfigService {
@@ -35,6 +35,7 @@ public interface SysConfigService {
      * 获取List列表
      */
     List<SysConfigEntity> queryList(Map<String, Object> map);
+
     /**
      * 获取总记录数
      */
@@ -45,14 +46,15 @@ public interface SysConfigService {
     /**
      * 根据key，获取配置的value值
      *
-     * @param key           key
+     * @param key key
      */
     String getValue(String key);
 
     /**
      * 根据key，获取value的Object对象
-     * @param key    key
-     * @param clazz  Object对象
+     *
+     * @param key   key
+     * @param clazz Object对象
      */
     <T> T getConfigObject(String key, Class<T> clazz);
 }

@@ -29,23 +29,25 @@ public interface SysUserService {
     /**
      * 查询用户列表
      */
-    List<SysUserEntity> queryList(Map<String,Object> map);
+    List<SysUserEntity> queryList(Map<String, Object> map);
 
     /**
      * 查询总数
      */
-    int queryTotal(Map<String,Object> map);
+    int queryTotal(Map<String, Object> map);
 
     /**
      * 用户修改密码
-     * @param userId       用户ID
-     * @param password     原密码
-     * @param newPassword  新密码
+     *
+     * @param userId      用户ID
+     * @param password    原密码
+     * @param newPassword 新密码
      */
     int updatePassword(Long userId, String password, String newPassword);
 
     /**
      * 根据用户ID查询用户
+     *
      * @param userId
      */
     SysUserEntity queryObject(Long userId);

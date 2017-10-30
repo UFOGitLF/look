@@ -47,7 +47,9 @@ public class Constant {
         /**
          * 阿里云
          */
-        /**ALIYUN(2);*/
+        /**
+         * ALIYUN(2);
+         */
 
         private int value;
 

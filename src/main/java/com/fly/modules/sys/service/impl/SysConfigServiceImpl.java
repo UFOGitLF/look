@@ -16,11 +16,11 @@ import java.util.Map;
 
 /**
  * 系统配置
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 @Service("sysConfigService")
-public class SysConfigServiceImpl implements SysConfigService{
+public class SysConfigServiceImpl implements SysConfigService {
     @Autowired
     private SysConfigDao sysConfigDao;
     @Autowired
@@ -52,7 +52,7 @@ public class SysConfigServiceImpl implements SysConfigService{
     public void deleteBatch(Long[] ids) {
         sysConfigDao.deleteBatch(ids);
 
-        for(Long id : ids){
+        for (Long id : ids) {
             SysConfigEntity config = queryObject(id);
             sysConfigRedis.delete(config.getKey());
         }
@@ -76,7 +76,7 @@ public class SysConfigServiceImpl implements SysConfigService{
     @Override
     public String getValue(String key) {
         SysConfigEntity config = sysConfigRedis.get(key);
-        if(config == null){
+        if (config == null) {
             config = sysConfigDao.queryByKey(key);
             sysConfigRedis.saveOrUpdate(config);
         }
@@ -87,7 +87,7 @@ public class SysConfigServiceImpl implements SysConfigService{
     @Override
     public <T> T getConfigObject(String key, Class<T> clazz) {
         String value = getValue(key);
-        if(StringUtils.isNotBlank(value)){
+        if (StringUtils.isNotBlank(value)) {
             return new Gson().fromJson(value, clazz);
         }
 

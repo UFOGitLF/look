@@ -2,26 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fly.modules.job.dao.ScheduleJobDao">
-    <insert id="save" parameterType="com.fly.modules.job.entity.ScheduleJobEntity" useGeneratedKeys="true" keyProperty="jobId">
+    <insert id="save" parameterType="com.fly.modules.job.entity.ScheduleJobEntity" useGeneratedKeys="true"
+            keyProperty="jobId">
         INSERT INTO schedule_job
         (
-          `bean_name`,
-          `method_name`,
-          `params`,
-          `cron_expression`,
-          `status`,
-          `remark`,
-          `create_time`
+        `bean_name`,
+        `method_name`,
+        `params`,
+        `cron_expression`,
+        `status`,
+        `remark`,
+        `create_time`
         )
         VALUES
         (
-          #{beanName},
-          #{methodName},
-          #{params},
-          #{cronExpression},
-          #{status},
-          #{remark},
-          #{createTime}
+        #{beanName},
+        #{methodName},
+        #{params},
+        #{cronExpression},
+        #{status},
+        #{remark},
+        #{createTime}
         )
     </insert>
 
@@ -36,11 +37,11 @@
             limit #{offset},#{limit}
         </if>
     </select>
-    
+
     <select id="queryObject" resultType="com.fly.modules.job.entity.ScheduleJobEntity">
         SELECT * FROM schedule_job WHERE job_id = #{value}
     </select>
-    
+
     <select id="queryTotal" resultType="int">
         SELECT COUNT(1) FROM schedule_job
         <where>
@@ -49,7 +50,7 @@
             </if>
         </where>
     </select>
-    
+
     <update id="update" parameterType="com.fly.modules.job.entity.ScheduleJobEntity">
         UPDATE schedule_job
         <set>
@@ -74,14 +75,14 @@
         </set>
         WHERE job_id = #{jobId}
     </update>
-    
+
     <update id="updateBatch">
-        UPDATE schedule_job SET status = #{status} WHERE job_id IN 
+        UPDATE schedule_job SET status = #{status} WHERE job_id IN
         <foreach collection="list" item="jobId" open="(" separator="," close=")">
             #{jobId}
         </foreach>
     </update>
-    
+
     <delete id="deleteBatch">
         DELETE FROM schedule_job WHERE job_id IN
         <foreach collection="array" item="jobId" open="(" separator="," close=")">

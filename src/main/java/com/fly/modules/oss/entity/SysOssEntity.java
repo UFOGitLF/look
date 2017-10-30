@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * 文件上传
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @Data
-public class SysOssEntity implements Serializable{
+public class SysOssEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;

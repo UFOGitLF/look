@@ -3,15 +3,15 @@
 
 <mapper namespace="com.fly.modules.api.dao.TokenDao">
 
-	<select id="queryByUserId" resultType="com.fly.modules.api.entity.TokenEntity">
+    <select id="queryByUserId" resultType="com.fly.modules.api.entity.TokenEntity">
 		select * from tb_token where user_id = #{value}
 	</select>
 
-	<select id="queryByToken" resultType="com.fly.modules.api.entity.TokenEntity">
+    <select id="queryByToken" resultType="com.fly.modules.api.entity.TokenEntity">
 		select * from tb_token where token = #{value}
 	</select>
-	 
-	<insert id="save">
+
+    <insert id="save">
 		insert into tb_token
 		(
 			`user_id`, 
@@ -27,15 +27,15 @@
 			#{updateTime}
 		)
 	</insert>
-	 
-	<update id="update">
-		update tb_token 
-		<set>
-			<if test="token != null">`token` = #{token}, </if>
-			<if test="expireTime != null">`expire_time` = #{expireTime}, </if>
-			<if test="updateTime != null">`update_time` = #{updateTime}</if>
-		</set>
-		where user_id = #{userId}
-	</update>
+
+    <update id="update">
+        update tb_token
+        <set>
+            <if test="token != null">`token` = #{token},</if>
+            <if test="expireTime != null">`expire_time` = #{expireTime},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
 
 </mapper>

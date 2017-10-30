@@ -73,10 +73,10 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public int updatePassword(Long userId, String password, String newPassword) {
-        Map<String,Object> map=new HashMap<>();
-        map.put("userId",userId);
-        map.put("password",password);
-        map.put("newPassword",newPassword);
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("password", password);
+        map.put("newPassword", newPassword);
 
         return sysUserDao.updatePassword(map);
     }
@@ -89,9 +89,9 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @Transactional
     public void update(SysUserEntity user) {
-        if(StringUtils.isBlank(user.getPassword())){
+        if (StringUtils.isBlank(user.getPassword())) {
             user.setPassword(null);
-        }else{
+        } else {
             user.setPassword(new Sha256Hash(user.getPassword(), user.getSalt()).toHex());
         }
         sysUserDao.update(user);

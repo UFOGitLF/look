@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 文件上传
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @Mapper
-public interface SysOssDao extends BaseDao<SysOssEntity>{
+public interface SysOssDao extends BaseDao<SysOssEntity> {
 }

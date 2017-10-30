@@ -20,7 +20,7 @@ public interface SysLogService {
 
     List<SysLogEntity> queryList(Map<String, Object> params);
 
-    int queryTotal(Map<String,Object> map);
+    int queryTotal(Map<String, Object> map);
 
     void delete(Long id);
 

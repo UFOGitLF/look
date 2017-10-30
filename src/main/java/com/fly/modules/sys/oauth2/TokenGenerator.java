@@ -7,7 +7,7 @@ import java.util.UUID;
 
 /**
  * 生成TOKEN
- *
+ * <p>
  * Created by xinshidai on 17/9/18.
  */
 public class TokenGenerator {

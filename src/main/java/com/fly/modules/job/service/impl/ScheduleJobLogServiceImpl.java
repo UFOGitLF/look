@@ -11,11 +11,11 @@ import java.util.Map;
 
 /**
  * 定时任务日志
- *
+ * <p>
  * Created by xinshidai on 17/10/23.
  */
 @Service("scheduleJobLogService")
-public class ScheduleJobLogServiceImpl implements ScheduleJobLogService{
+public class ScheduleJobLogServiceImpl implements ScheduleJobLogService {
     @Autowired
     private ScheduleJobLogDao jobLogDao;
 

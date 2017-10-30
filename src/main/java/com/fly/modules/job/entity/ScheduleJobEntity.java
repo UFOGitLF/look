@@ -13,11 +13,11 @@ import java.util.Date;
  */
 @Data
 public class ScheduleJobEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
     /**
      * 任务调度参数key
      */
     public static final String JOB_PARAM_KEY = "JOB_PARAM_KEY";
+    private static final long serialVersionUID = 1L;
     /**
      * 任务id
      */

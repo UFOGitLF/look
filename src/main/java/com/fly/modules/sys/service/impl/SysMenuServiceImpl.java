@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 
 /**
  * 菜单
- *
+ * <p>
  * Created by xinshidai on 17/9/26.
  */
 @Service
-public class SysMenuServiceImpl implements SysMenuService{
+public class SysMenuServiceImpl implements SysMenuService {
 
     @Autowired
     private SysMenuDao menuDao;
@@ -30,7 +30,7 @@ public class SysMenuServiceImpl implements SysMenuService{
     @Override
     public List<SysMenuEntity> queryListParentId(Long parentId, List<Long> menuIdList) {
         List<SysMenuEntity> menuList = queryListParentId(parentId);
-        if(menuIdList == null){
+        if (menuIdList == null) {
             return menuList;
         }
 
@@ -51,7 +51,7 @@ public class SysMenuServiceImpl implements SysMenuService{
     @Override
     public List<SysMenuEntity> getUserMenuList(Long userId) {
         //系统管理员，拥有最高权限
-        if(userId == Constant.SUPER_ADMIN){
+        if (userId == Constant.SUPER_ADMIN) {
             return getAllMenuList(null);
         }
 
@@ -73,8 +73,8 @@ public class SysMenuServiceImpl implements SysMenuService{
     private List<SysMenuEntity> getMenuTreeList(List<SysMenuEntity> menuList, List<Long> menuIdList) {
         List<SysMenuEntity> subMenuList = new ArrayList<>();
 
-        for(SysMenuEntity entity : menuList){
-            if(entity.getType() == Constant.MenuType.CATALOG.getValue()){//目录
+        for (SysMenuEntity entity : menuList) {
+            if (entity.getType() == Constant.MenuType.CATALOG.getValue()) {//目录
                 entity.setList(getMenuTreeList(queryListParentId(entity.getMenuId(), menuIdList), menuIdList));
             }
             subMenuList.add(entity);

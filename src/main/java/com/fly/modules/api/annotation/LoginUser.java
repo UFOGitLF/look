@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 登录用户信息
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Target(ElementType.PARAMETER)

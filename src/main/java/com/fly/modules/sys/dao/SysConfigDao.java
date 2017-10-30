@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * 系统配置
- *
+ * <p>
  * Created by xinshidai on 17/9/25.
  */
 @Mapper
-public interface SysConfigDao extends BaseDao<SysConfigEntity>{
+public interface SysConfigDao extends BaseDao<SysConfigEntity> {
     /**
      * 根据key，查询value
      */

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 第一个测试task
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @Component("firstTask")
@@ -21,8 +21,8 @@ public class FirstTask {
     private SysUserService userService;
 
     //定时任务只能接受一个参数,如果有多个参数,使用JSON数据即可
-    public void first(String params){
-        logger.info("我是一个带参数的first方法,正在被运行,参数为: {}",params);
+    public void first(String params) {
+        logger.info("我是一个带参数的first方法,正在被运行,参数为: {}", params);
 
         try {
             Thread.sleep(1000L);
@@ -35,7 +35,7 @@ public class FirstTask {
         System.out.println(ToStringBuilder.reflectionToString(user));
     }
 
-    public void second(){
+    public void second() {
         logger.info("我是一个不带参数的second方法");
     }
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * 系统日志
- *
+ * <p>
  * Created by xinshidai on 17/9/26.
  */
 @RestController
@@ -29,14 +29,14 @@ public class SysLogController {
 
     @RequestMapping(value = "/list")
     @RequiresPermissions("sys:log:list")
-    public R logList(@RequestParam Map<String,Object> params){
+    public R logList(@RequestParam Map<String, Object> params) {
         //查询列表数据
-        Query query=new Query(params);
-        List<SysLogEntity> sysLogList=logService.queryList(params);
+        Query query = new Query(params);
+        List<SysLogEntity> sysLogList = logService.queryList(params);
         int total = logService.queryTotal(query);
 
-        PageData pageData=new PageData(sysLogList,total,query.getLimit(),query.getPage());
+        PageData pageData = new PageData(sysLogList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page",pageData);
+        return R.ok().put("page", pageData);
     }
 }

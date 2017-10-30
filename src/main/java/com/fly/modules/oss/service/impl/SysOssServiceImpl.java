@@ -11,11 +11,11 @@ import java.util.Map;
 
 /**
  * 文件上传
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @Service
-public class SysOssServiceImpl implements SysOssService{
+public class SysOssServiceImpl implements SysOssService {
     @Autowired
     private SysOssDao ossDao;
 

@@ -10,11 +10,11 @@ import java.util.List;
 
 /**
  * MVC配置
- *
+ * <p>
  * Created by xinshidai on 17/10/27.
  */
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurerAdapter{
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
     }

@@ -4,7 +4,7 @@
     <select id="queryObject" resultType="com.fly.modules.job.entity.ScheduleJobLogEntity">
         SELECT * FROM schedule_job_log WHERE log_id = #{value}
     </select>
-    
+
     <select id="queryList" resultType="com.fly.modules.job.entity.ScheduleJobLogEntity">
         SELECT * FROM schedule_job_log
         <where>

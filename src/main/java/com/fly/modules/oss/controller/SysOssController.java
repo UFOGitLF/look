@@ -23,7 +23,7 @@ import java.util.Map;
 
 /**
  * 文件上传
- *
+ * <p>
  * Created by xinshidai on 17/10/19.
  */
 @RestController
@@ -42,15 +42,15 @@ public class SysOssController {
      */
     @RequestMapping("list")
     @RequiresPermissions("sys:oss:all")
-    public R list(@RequestParam Map<String,Object> params){
-        Query query=new Query(params);
+    public R list(@RequestParam Map<String, Object> params) {
+        Query query = new Query(params);
         List<SysOssEntity> ossList = ossService.queryList(query);
 
         int total = ossService.queryTotal(query);
 
-        PageData pageData=new PageData(ossList,total,query.getLimit(),query.getPage());
+        PageData pageData = new PageData(ossList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page",pageData);
+        return R.ok().put("page", pageData);
     }
 
     /**
@@ -58,10 +58,10 @@ public class SysOssController {
      */
     @RequestMapping("config")
     @RequiresPermissions("sys:oss:all")
-    public R config(){
-        CloudStorageConfig config = configService.getConfigObject(KEY,CloudStorageConfig.class);
+    public R config() {
+        CloudStorageConfig config = configService.getConfigObject(KEY, CloudStorageConfig.class);
 
-        return R.ok().put("config",config);
+        return R.ok().put("config", config);
     }
 
     /**
@@ -69,15 +69,15 @@ public class SysOssController {
      */
     @RequestMapping("saveConfig")
     @RequiresPermissions("sys:oss:all")
-    public R saveConfig(@RequestBody CloudStorageConfig config){
+    public R saveConfig(@RequestBody CloudStorageConfig config) {
         //校验合法性
         ValidatorUtils.validateEntity(config);
 
-        if (config.getType() == Constant.CloudService.QINIU.getValue()){
+        if (config.getType() == Constant.CloudService.QINIU.getValue()) {
             //检验七牛数据
             ValidatorUtils.validateEntity(config, QiniuGroup.class);
         }
-        configService.updateValueByKey(KEY,new Gson().toJson(config));
+        configService.updateValueByKey(KEY, new Gson().toJson(config));
         return R.ok();
     }
 
@@ -87,7 +87,7 @@ public class SysOssController {
     @RequestMapping("upload")
     @RequiresPermissions("sys:oss:all")
     public R upload(@RequestParam("file") MultipartFile file) throws Exception {
-        if (file.isEmpty()){
+        if (file.isEmpty()) {
             return R.error(ResultCodeConstants.FILE_EMPTY_ERROR);
         }
         //上传文件
@@ -99,7 +99,7 @@ public class SysOssController {
         ossEntity.setCreateDate(new Date());
         ossService.save(ossEntity);
 
-        return R.ok().put("url",url);
+        return R.ok().put("url", url);
     }
 
     /**
@@ -107,7 +107,7 @@ public class SysOssController {
      */
     @RequestMapping("delete")
     @RequiresPermissions("sys:oss:all")
-    public R delete(@RequestBody Long[] ids){
+    public R delete(@RequestBody Long[] ids) {
         ossService.deleteBatch(ids);
         return R.ok();
     }

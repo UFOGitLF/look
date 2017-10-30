@@ -87,17 +87,17 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 检查权限是否越权
      */
-    private void checkPrems(SysRoleEntity role){
+    private void checkPrems(SysRoleEntity role) {
         //如果不是超级管理员，则需要判断角色的权限是否超过自己的权限
-        if(role.getCreateUserId() == Constant.SUPER_ADMIN){
-            return ;
+        if (role.getCreateUserId() == Constant.SUPER_ADMIN) {
+            return;
         }
 
         //查询用户所拥有的菜单列表
         List<Long> menuIdList = userService.queryAllMenuId(role.getCreateUserId());
 
         //判断是否越权
-        if(!menuIdList.containsAll(role.getMenuIdList())){
+        if (!menuIdList.containsAll(role.getMenuIdList())) {
             throw new RRException("新增角色的权限，已超出你的权限范围");
         }
     }
