@@ -259,7 +259,7 @@
                 <configuration>
                     <!--镜像名称-->
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <!-- 指定Dockerfile所在的路径 -->
+                    <!-- 指定Docker_file所在的路径 -->
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
