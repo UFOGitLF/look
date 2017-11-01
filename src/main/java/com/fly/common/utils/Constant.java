@@ -1,6 +1,7 @@
 package com.fly.common.utils;
 
-import com.google.common.base.Charsets;
+
+import org.apache.commons.io.Charsets;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
