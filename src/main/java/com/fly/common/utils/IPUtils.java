@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * IP 地址
@@ -36,5 +38,14 @@ public class IPUtils {
             logger.error("IPUtils ERROR ", e);
         }
         return ip;
+    }
+
+    public static String getIp(){
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();//不处理
+        }
+        return "UnknownHost";
     }
 }
