@@ -33,7 +33,7 @@ public class RedisAspect {
         Object result = null;
         if (open) {
             try {
-                joinPoint.proceed();
+                result = joinPoint.proceed();
             } catch (Exception e) {
                 logger.error("Redis error", e);
                 throw new RRException("Redis 服务器异常");
