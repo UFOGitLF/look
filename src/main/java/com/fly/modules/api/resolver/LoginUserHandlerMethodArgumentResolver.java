@@ -21,6 +21,7 @@ import javax.annotation.Resource;
  */
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
+
     @Resource
     private UserService userService;
 
