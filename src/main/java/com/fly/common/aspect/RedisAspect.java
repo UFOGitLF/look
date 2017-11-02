@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 @Aspect
 @Configuration
 public class RedisAspect {
+
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Value("${spring.redis.open: false}")
