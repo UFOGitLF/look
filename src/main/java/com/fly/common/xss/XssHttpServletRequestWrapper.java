@@ -20,6 +20,7 @@ import java.util.Map;
  * Created by xinshidai on 17/9/21.
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+
     private static final HTMLFilter htmlFilter = new HTMLFilter();
     /**
      * 没被包装过的request,特殊场景需要自己过滤
