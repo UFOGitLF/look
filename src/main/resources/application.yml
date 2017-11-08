@@ -25,7 +25,7 @@ spring:
     static-locations: classpath:/static/,classpath:/views/
 
   redis:
-      open: true  # 是否开启redis缓存
+      open: false  # 是否开启redis缓存
       database: 5
       host: 104.225.237.169
       port: 6379
