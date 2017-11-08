@@ -35,7 +35,6 @@ public class SQLFilter {
                 throw new RRException("包含非法字符");
             }
         }
-
         return str;
     }
 }
