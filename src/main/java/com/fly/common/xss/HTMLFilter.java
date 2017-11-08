@@ -40,7 +40,6 @@ import java.util.regex.Pattern;
  * @author Michael Semb Wever
  */
 public final class HTMLFilter {
-
     /**
      * regex flag union representing /si modifiers in php
      **/
