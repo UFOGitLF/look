@@ -27,7 +27,7 @@ spring:
   redis:
       open: true  # 是否开启redis缓存
       database: 5
-      host: 97.64.83.230
+      host: 104.225.237.169
       port: 6379
       password: y8KwTteyjV4jtrTnEf955vQAFrZ7wz
       timeout: 6000  # 连接超时时长（毫秒）
