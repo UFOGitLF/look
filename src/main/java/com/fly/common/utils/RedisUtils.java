@@ -25,8 +25,10 @@ public class RedisUtils {
     public final static long NOT_EXPIRE = -1;
 
     private final static Gson gson = new Gson();
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
     @Autowired
     private ValueOperations<String, String> valueOperations;
 

@@ -21,7 +21,7 @@ public class RedisAspect {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Value("${spring.redis.open: false}")
+    @Value("${spring.redis.open}")
     private boolean open;
 
     @Pointcut("execution(* com.fly.common.utils.RedisUtils.*(..))")
