@@ -5,17 +5,7 @@ package com.fly.dynamicdatasource;
  * <p>
  * Created by xinshidai on 17/9/19.
  */
-public enum DataSourceContext {
-    FIRST("first"),
-    SECOND("second");
-
-    private String name;
-
-    DataSourceContext(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
+public interface DataSourceContext {
+    String FIRST = "first";
+    String SECOND = "second";
 }
