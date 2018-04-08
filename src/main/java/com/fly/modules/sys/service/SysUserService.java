@@ -61,4 +61,5 @@ public interface SysUserService {
      * 删除用户
      */
     void deleteBatch(Long[] userIds);
+
 }

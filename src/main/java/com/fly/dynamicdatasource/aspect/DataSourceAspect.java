@@ -39,11 +39,11 @@ public class DataSourceAspect {
         DataSource dataSource = method.getAnnotation(DataSource.class);
 
         if (dataSource == null) {
-            DynamicDataSource.setDataSource(DataSourceContext.FIRST.getName());
-            log.debug("set datasource is {}",DataSourceContext.FIRST);
+            DynamicDataSource.setDataSource(DataSourceContext.FIRST);
+            log.debug("Set datasource is {}",DataSourceContext.FIRST);
         }else {
             DynamicDataSource.setDataSource(dataSource.name());
-            log.debug("set datasource is {}",dataSource.name());
+            log.debug("Set datasource is {}",dataSource.name());
         }
 
         try {

@@ -34,8 +34,8 @@ public class DynamicDataSourceConfig {
     @Primary
     public DynamicDataSource dataSource(DataSource firstDataSource, DataSource secondDataSource) {
         Map<String, DataSource> targetDataSources = new HashMap<>();
-        targetDataSources.put(DataSourceContext.FIRST.getName(), firstDataSource);
-        targetDataSources.put(DataSourceContext.SECOND.getName(), secondDataSource);
+        targetDataSources.put(DataSourceContext.FIRST, firstDataSource);
+        targetDataSources.put(DataSourceContext.SECOND, secondDataSource);
         return new DynamicDataSource(firstDataSource, targetDataSources);
     }
 }

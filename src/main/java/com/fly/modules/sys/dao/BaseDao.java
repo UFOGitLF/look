@@ -1,5 +1,7 @@
 package com.fly.modules.sys.dao;
 
+import com.fly.modules.sys.entity.SysUserEntity;
+
 import java.util.List;
 import java.util.Map;
 

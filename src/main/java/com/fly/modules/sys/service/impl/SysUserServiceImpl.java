@@ -25,6 +25,7 @@ import java.util.Map;
  */
 @Service
 public class SysUserServiceImpl implements SysUserService {
+
     @Autowired
     private SysUserDao sysUserDao;
 
